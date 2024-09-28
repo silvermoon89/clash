@@ -6,6 +6,9 @@ DOMAIN-SUFFIX,time.windows.com
 DOMAIN-SUFFIX,lanzov.com
 DOMAIN-SUFFIX,hao123.com
 
+DOMAIN-SUFFIX,npmmirror.com
+DOMAIN-SUFFIX,cnpmjs.com
+
 # 域名关键字匹配
 DOMAIN-KEYWORD,baidu
 
@@ -23,11 +26,6 @@ IP-CIDR,223.6.6.6/32,no-resolve
 IP-CIDR,180.76.76.76/32,no-resolve
 IP-CIDR,114.114.114.114/32,no-resolve
 IP-CIDR,114.114.115.115/32,no-resolve
-
-
-# npm安装源
-DOMAIN-SUFFIX,npmmirror.com
-DOMAIN-SUFFIX,cnpmjs.com
 
 # 360
 DOMAIN-SUFFIX,360.com
