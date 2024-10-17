@@ -13,6 +13,9 @@ DOMAIN-SUFFIX,cnpmjs.com
 # 金十数据
 DOMAIN-SUFFIX,jin10.com
 
+# keep
+DOMAIN-SUFFIX,keepcdn.com
+
 # 动漫
 DOMAIN-SUFFIX,agedm.org
 DOMAIN-KEYWORD,yinghua
