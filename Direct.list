@@ -82,6 +82,11 @@ DOMAIN-SUFFIX,bitgetimg.com
 DOMAIN-SUFFIX,bitget.fit
 DOMAIN-KEYWORD,bitget
 
+# grass
+DOMAIN-SUFFIX,grass.com
+DOMAIN-SUFFIX,getgrass.com
+DOMAIN-KEYWORD,grass
+
 # npm
 DOMAIN-SUFFIX,npmmirror.com
 DOMAIN-SUFFIX,cnpmjs.com
