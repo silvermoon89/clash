@@ -83,11 +83,11 @@ DOMAIN-SUFFIX,bitget.fit
 DOMAIN-KEYWORD,bitget
 
 # grass
-DOMAIN-SUFFIX,grass.com
-DOMAIN-SUFFIX,getgrass.com
-DOMAIN-SUFFIX,grass.io
-DOMAIN-SUFFIX,getgrass.io
-DOMAIN-KEYWORD,grass
+#DOMAIN-SUFFIX,grass.com
+#DOMAIN-SUFFIX,getgrass.com
+#DOMAIN-SUFFIX,grass.io
+#DOMAIN-SUFFIX,getgrass.io
+#DOMAIN-KEYWORD,grass
 
 # npm
 DOMAIN-SUFFIX,npmmirror.com
