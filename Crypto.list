@@ -74,8 +74,11 @@ DOMAIN-SUFFIX,binancezh.top
 DOMAIN-SUFFIX,bnappzh.mobi
 DOMAIN-SUFFIX,bsc.getblock.io
 DOMAIN-SUFFIX,bscscan.com
+DOMAIN-SUFFIX,bnappweb.academy
 PROCESS-NAME,Binance.exe
 DOMAIN-KEYWORD,binance
+DOMAIN-KEYWORD,bnappweb
+DOMAIN-KEYWORD,bnappzh
 
 # > Huobi
 DOMAIN-SUFFIX,hbabit.com
