@@ -1,6 +1,7 @@
 # 代理补充列表
 # 指纹浏览器
 DOMAIN-SUFFIX,morelogin.com
+DOMAIN-KEYWORD,morelogin
 
 # 域名关键字匹配
 DOMAIN-KEYWORD,1e100
