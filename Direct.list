@@ -6,6 +6,9 @@ DOMAIN-SUFFIX,time.windows.com
 DOMAIN-SUFFIX,lanzov.com
 DOMAIN-SUFFIX,hao123.com
 
+# giffgaff电话卡
+DOMAIN-SUFFIX,giffgaff.com
+
 # npm
 DOMAIN-SUFFIX,npmmirror.com
 DOMAIN-SUFFIX,cnpmjs.com
