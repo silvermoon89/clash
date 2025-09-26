@@ -105,9 +105,11 @@ DOMAIN-KEYWORD,huobi
 
 # > OKX
 DOMAIN-SUFFIX,okex.com
+DOMAIN-SUFFIX,okex.org
 DOMAIN-SUFFIX,okx.com
 PROCESS-NAME,OKX.exe
 DOMAIN-KEYWORD,okx
+DOMAIN-KEYWORD,okex
 
 # > bitget
 DOMAIN-SUFFIX,bitget.com
