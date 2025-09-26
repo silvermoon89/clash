@@ -6,10 +6,6 @@ DOMAIN-SUFFIX,time.windows.com
 DOMAIN-SUFFIX,lanzov.com
 DOMAIN-SUFFIX,hao123.com
 
-# 谷歌商店APP更新下载
-DOMAIN-SUFFIX,services.googleapis.cn
-DOMAIN-SUFFIX,xn--ngstr-lra8j.com
-
 # giffgaff电话卡
 DOMAIN-SUFFIX,giffgaff.com
 
