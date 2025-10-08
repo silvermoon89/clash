@@ -69,6 +69,21 @@ DOMAIN-KEYWORD,bnappzh
 DOMAIN-KEYWORD,bnappweb
 PROCESS-NAME,Binance.exe
 
+
+# Binance 网页端（主站 / Web3 / 教程 / 区块链）
+DOMAIN-SUFFIX,binance.org
+DOMAIN-SUFFIX,binance.vision
+DOMAIN-SUFFIX,binance.co
+DOMAIN-SUFFIX,binance.info
+DOMAIN-SUFFIX,binance.cloud
+DOMAIN-SUFFIX,binanceapi.com
+DOMAIN-SUFFIX,binance.charity
+DOMAIN-SUFFIX,binance.cc
+DOMAIN-SUFFIX,bnbstatic.com
+DOMAIN-SUFFIX,bntrace.com
+DOMAIN-SUFFIX,bscscan.com
+DOMAIN-SUFFIX,bsc.getblock.io
+DOMAIN-SUFFIX,web3.binance.com
 DOMAIN-SUFFIX,www.binance.com
 DOMAIN-SUFFIX,binance.com
 
