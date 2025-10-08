@@ -69,6 +69,9 @@ DOMAIN-KEYWORD,bnappzh
 DOMAIN-KEYWORD,bnappweb
 PROCESS-NAME,Binance.exe
 
+DOMAIN-SUFFIX,www.binance.com
+DOMAIN-SUFFIX,binance.com
+
 
 # > Huobi
 DOMAIN-SUFFIX,hbabit.com
