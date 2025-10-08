@@ -3,6 +3,11 @@
 DOMAIN-SUFFIX,morelogin.com
 DOMAIN-KEYWORD,morelogin
 
+# 币安PC端
+DOMAIN-SUFFIX,binance.com
+DOMAIN-SUFFIX,www.binance.com
+DOMAIN-SUFFIX,web3.binance.com
+
 # 域名关键字匹配
 DOMAIN-KEYWORD,1e100
 
