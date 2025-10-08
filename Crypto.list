@@ -41,18 +41,18 @@
 # DOMAIN-SUFFIX,binance.com
 # DOMAIN-SUFFIX,www.binance.com
 # DOMAIN-SUFFIX,web3.binance.com
-DOMAIN-SUFFIX,binance.org
-DOMAIN-SUFFIX,binance.vision
-DOMAIN-SUFFIX,binance.co
-DOMAIN-SUFFIX,binance.info
-DOMAIN-SUFFIX,binance.cloud
-DOMAIN-SUFFIX,binanceapi.com
-DOMAIN-SUFFIX,binance.charity
-DOMAIN-SUFFIX,binance.cc
-DOMAIN-SUFFIX,bnbstatic.com
-DOMAIN-SUFFIX,bntrace.com
-DOMAIN-SUFFIX,bscscan.com
-DOMAIN-SUFFIX,bsc.getblock.io
+# DOMAIN-SUFFIX,binance.org
+# DOMAIN-SUFFIX,binance.vision
+# DOMAIN-SUFFIX,binance.co
+# DOMAIN-SUFFIX,binance.info
+# DOMAIN-SUFFIX,binance.cloud
+# DOMAIN-SUFFIX,binanceapi.com
+# DOMAIN-SUFFIX,binance.charity
+# DOMAIN-SUFFIX,binance.cc
+# DOMAIN-SUFFIX,bnbstatic.com
+# DOMAIN-SUFFIX,bntrace.com
+# DOMAIN-SUFFIX,bscscan.com
+# DOMAIN-SUFFIX,bsc.getblock.io
 
 # Binance APP 专用
 DOMAIN-SUFFIX,binance.me
@@ -79,6 +79,8 @@ DOMAIN-SUFFIX,bnappzh.com
 DOMAIN-SUFFIX,bnappzh.mobi
 DOMAIN-SUFFIX,bnappweb.academy
 DOMAIN-SUFFIX,bnappweb.biz
+DOMAIN-SUFFIX,binance.me
+DOMAIN-SUFFIX,wallet.binance.com
 DOMAIN-KEYWORD,bnappzh
 DOMAIN-KEYWORD,bnappweb
 PROCESS-NAME,Binance.exe
