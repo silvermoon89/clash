@@ -16,9 +16,7 @@ DOMAIN-SUFFIX,bnbstatic.com
 DOMAIN-SUFFIX,bntrace.com
 DOMAIN-SUFFIX,bscscan.com
 DOMAIN-SUFFIX,bsc.getblock.io
-DOMAIN-SUFFIX,www.binance.com
 DOMAIN-SUFFIX,web3.binance.com
-DOMAIN-SUFFIX,binance.com
 
 # 域名关键字匹配
 DOMAIN-KEYWORD,1e100
