@@ -43,6 +43,7 @@ DOMAIN-SUFFIX,binance.me
 DOMAIN-SUFFIX,binance.us
 DOMAIN-SUFFIX,binance.im
 DOMAIN-SUFFIX,binance.net
+DOMAIN-SUFFIX,binance.gg
 DOMAIN-SUFFIX,binancezh.be
 DOMAIN-SUFFIX,binancezh.biz
 DOMAIN-SUFFIX,binancezh.cc
@@ -86,6 +87,8 @@ DOMAIN-SUFFIX,bsc.getblock.io
 DOMAIN-SUFFIX,web3.binance.com
 DOMAIN-SUFFIX,www.binance.com
 DOMAIN-SUFFIX,binance.com
+
+DOMAIN-KEYWORD,binance
 
 
 # > Huobi
