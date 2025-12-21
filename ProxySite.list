@@ -1,4 +1,7 @@
 # 代理补充列表
+# Steam商店
+DOMAIN-SUFFIX,store.steampowered.com
+
 # 指纹浏览器
 DOMAIN-SUFFIX,morelogin.com
 DOMAIN-KEYWORD,morelogin
