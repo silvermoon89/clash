@@ -19,12 +19,6 @@ DOMAIN-SUFFIX,jin10.com
 # keep
 DOMAIN-SUFFIX,keepcdn.com
 
-# 动漫
-DOMAIN-SUFFIX,agedm.org
-DOMAIN-KEYWORD,yinghua
-DOMAIN-KEYWORD,cycanime
-DOMAIN-KEYWORD,zzzfun
-
 # 异次元漫画源
 DOMAIN-SUFFIX,m.gmh1234.com
 DOMAIN-SUFFIX,m.soudongman.com
