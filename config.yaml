@@ -1,0 +1,481 @@
+# ---------------------------------------------------
+# 基础性能设置
+# ---------------------------------------------------
+port: 7890
+socks-port: 7891
+allow-lan: true
+mode: rule
+log-level: info
+ipv6: false
+unified-delay: true
+tcp-concurrent: true
+global-client-fingerprint: chrome
+external-controller: 127.0.0.1:9090
+
+# ---------------------------------------------------
+# DNS 深度优化
+# ---------------------------------------------------
+dns:
+  enable: true
+  listen: 0.0.0.0:53
+  enhanced-mode: fake-ip
+  fake-ip-range: 198.18.0.1/16
+  fake-ip-filter-mode: blacklist
+  fake-ip-filter:
+    - '+.msftconnecttest.com'
+    - '+.msftncsi.com'
+    - rule-set:fakeipfilter_domain
+  default-nameserver:
+    - 223.5.5.5
+    - 119.29.29.29
+  proxy-server-nameserver:
+    - https://dns.alidns.com/dns-query
+    - https://doh.pub/dns-query
+  nameserver:
+    - https://dns.alidns.com/dns-query
+    - https://doh.pub/dns-query
+  fallback:
+    - tls://8.8.4.4
+    - tls://1.1.1.1
+    - https://1.1.1.1/dns-query
+    - https://dns.google/dns-query
+  fallback-filter:
+    geoip: true
+    ipcidr:
+      - 240.0.0.0/4
+
+# ---------------------------------------------------
+# 1. 节点池 (Sub-Store)
+# ---------------------------------------------------
+proxy-providers:
+  SubStore:
+    type: http
+    # 🔴 🔴 🔴 请在这里填入你的 Sub-Store 链接 🔴 🔴 🔴
+    url: ''
+    interval: 86400
+    health-check:
+      enable: true
+      interval: 300
+      url: http://www.gstatic.com/generate_204
+
+# ---------------------------------------------------
+# 2. 策略组 (已修复并优化逻辑)
+# ---------------------------------------------------
+proxy-groups:
+  # --- 🟢 总入口 ---
+  - name: 🚀 节点选择
+    type: select
+    use:
+      - SubStore
+    proxies:
+      - 自建节点
+      - DIRECT
+
+  # --- 🟡 自动测速/地区分组 (底层逻辑) ---
+
+  - name: 自建节点
+    type: select
+    use:
+      - SubStore
+    filter: '(?i)(自建|vps)'
+
+  # [地区手动] 手动选特定节点
+  - name: 🇭🇰 香港节点
+    type: select
+    use:
+      - SubStore
+    filter: '(?=.*(港|HK|(?i)Hong))^((?!(台|日|韩|新|深|美)).)*$'
+
+  - name: 🇯🇵 日本节点
+    type: select
+    use:
+      - SubStore
+    filter: '(?=.*(日|JP|(?i)Japan))^((?!(港|台|韩|新|美)).)*$'
+
+  - name: 🇸🇬 狮城节点
+    type: select
+    use:
+      - SubStore
+    filter: '(?=.*(新加坡|坡|狮城|SG|Singapore))^((?!(台|日|韩|深|美)).)*$'
+
+  - name: US 美国节点
+    type: select
+    use:
+      - SubStore
+    filter: '(?=.*(美|US|(?i)States|America))^((?!(港|台|韩|新|日)).)*$'
+
+  - name: TW 台湾节点
+    type: select
+    use:
+      - SubStore
+    filter: '(?=.*(台湾|台|TW|(?i)TW))^((?!(港|日|韩|新|深|美)).)*$'
+
+  # [自动测速] 选最快的节点
+  - name: ♻️ 自动选择
+    type: url-test
+    use:
+      - SubStore
+    filter: '^((?!(直连|落地|自建|VPS|vps)).)*$'
+    tolerance: 50
+    interval: 300
+
+  # [地区自动] 自动选该地区最快
+  - name: ♻️ 香港自动
+    type: url-test
+    use:
+      - SubStore
+    filter: '(?=.*(港|HK|(?i)Hong))^((?!(台|日|韩|新|深|美|落地|自建|VPS|vps)).)*$'
+    tolerance: 50
+    interval: 300
+
+  - name: ♻️ 日本自动
+    type: url-test
+    use:
+      - SubStore
+    filter: '(?=.*(日|JP|(?i)Japan))^((?!(港|台|韩|新|美|落地|自建|VPS|vps)).)*$'
+    tolerance: 50
+    interval: 300
+
+  - name: ♻️ 狮城自动
+    type: url-test
+    use:
+      - SubStore
+    filter: '(?=.*(新加坡|坡|狮城|SG|Singapore))^((?!(港|台|韩|日|美|落地|自建|VPS|vps)).)*$'
+    tolerance: 50
+    interval: 300
+
+  - name: ♻️ 美国自动
+    type: url-test
+    use:
+      - SubStore
+    filter: '(?=.*(美|US|(?i)States|America))^((?!(港|台|日|韩|新|落地|自建|VPS|vps)).)*$'
+    tolerance: 50
+    interval: 300
+
+  # --- 🔵 业务分组 (上层应用) ---
+
+  # 💎 加密生态
+  - name: 🚀 加密生态
+    type: select
+    proxies:
+      - DIRECT
+      - 🚀 节点选择
+
+  # 🤖 OpenAI
+  - name: 💬 OpenAi
+    type: select
+    filter: '(?i)美国|US|States|新加坡|SG|Singapore|日本|JP|Japan|台|TW|Taiwan'
+    proxies:
+      - 🚀 节点选择
+      - ♻️ 美国自动
+      - ♻️ 日本自动
+      - ♻️ 狮城自动
+
+  # 📹 油管 (优化：加入了自动组)
+  - name: 📹 油管视频
+    type: select
+    proxies:
+      - 🚀 节点选择
+      - ♻️ 香港自动
+      - ♻️ 日本自动
+      - ♻️ 狮城自动
+      - ♻️ 美国自动
+      - 🇭🇰 香港节点
+      - 🇯🇵 日本节点
+      - 🇸🇬 狮城节点
+      - US 美国节点
+      - TW 台湾节点
+
+  # 🎥 奈飞 (优化：加入了自动组)
+  - name: 🎥 奈飞视频
+    type: select
+    proxies:
+      - 🚀 节点选择
+      - ♻️ 狮城自动
+      - ♻️ 香港自动
+      - 🇸🇬 狮城节点
+      - 🇭🇰 香港节点
+      - TW 台湾节点
+      - US 美国节点
+
+  # 📺 B站 (修复：补全缺失的组，专用于港澳台)
+  - name: 📺 港澳台解锁
+    type: select
+    filter: '(?i)港|HK|Hong|台|TW|Taiwan'
+    use:
+      - SubStore
+    proxies:
+      - DIRECT
+
+  # --- ⚪ 普通分组 ---
+
+  - name: 📲 电报消息
+    type: select
+    proxies:
+      - 🚀 节点选择
+      - ♻️ 自动选择
+      - ♻️ 狮城自动
+      - ♻️ 香港自动
+
+  - name: 🌍 国外媒体
+    type: select
+    proxies:
+      - 🚀 节点选择
+      - ♻️ 自动选择
+
+  - name: Ⓜ️ 微软服务
+    type: select
+    proxies:
+      - 🚀 节点选择
+      - DIRECT
+
+  - name: 🍎 苹果服务
+    type: select
+    proxies:
+      - DIRECT
+      - 🚀 节点选择
+
+  - name: 📢 谷歌FCM
+    type: select
+    proxies:
+      - 🚀 节点选择
+      - DIRECT
+
+  - name: 🎮 游戏平台
+    type: select
+    proxies:
+      - DIRECT
+      - 🚀 节点选择
+
+  - name: 🌏 国内媒体
+    type: select
+    proxies:
+      - DIRECT
+      - 🚀 节点选择
+
+  - name: 🛑 广告拦截
+    type: select
+    proxies:
+      - REJECT
+      - DIRECT
+
+  - name: 🐟 漏网之鱼
+    type: select
+    proxies:
+      - 🚀 节点选择
+      - ♻️ 自动选择
+
+# ---------------------------------------------------
+# 3. 规则集
+# ---------------------------------------------------
+
+## type：可选http/file/inline  behavior：可选domain/ipcidr/classical format：可选yaml/text/mrs
+rule-anchor:
+  ip: &ip { type: http, interval: 86400, behavior: ipcidr, format: mrs }
+  domain: &domain { type: http, interval: 86400, behavior: domain, format: mrs }
+  class: &class { type: http, interval: 86400, behavior: classical, format: text }
+rule-providers:
+  fakeipfilter_domain:
+    {
+      <<: *domain,
+      url: 'https://raw.githubusercontent.com/wwqgtxx/clash-rules/release/fakeip-filter.mrs'
+    }
+  MyDirect:
+    {
+      <<: *class,
+      url: 'https://raw.githubusercontent.com/silvermoon89/clash/refs/heads/main/Direct.list'
+    }
+  MyCrypto:
+    {
+      <<: *class,
+      url: 'https://raw.githubusercontent.com/silvermoon89/clash/refs/heads/main/Crypto.list'
+    }
+  MyProxy:
+    {
+      <<: *class,
+      url: 'https://raw.githubusercontent.com/silvermoon89/clash/refs/heads/main/ProxySite.list'
+    }
+  LocalAreaNetwork:
+    {
+      <<: *class,
+      url: 'https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/LocalAreaNetwork.list'
+    }
+  UnBan:
+    { <<: *class, url: 'https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/UnBan.list' }
+  BanAD:
+    { <<: *class, url: 'https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/BanAD.list' }
+  BanProgramAD:
+    {
+      <<: *class,
+      url: 'https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/BanProgramAD.list'
+    }
+  AntiAD:
+    type: http
+    behavior: domain
+    format: yaml
+    url: 'https://raw.githubusercontent.com/privacy-protection-tools/anti-AD/master/anti-ad-clash.yaml'
+    interval: 86400
+  GoogleFCM:
+    {
+      <<: *class,
+      url: 'https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/GoogleFCM.list'
+    }
+  GoogleCN:
+    {
+      <<: *class,
+      url: 'https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/GoogleCN.list'
+    }
+  SteamCN:
+    {
+      <<: *class,
+      url: 'https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/SteamCN.list'
+    }
+  Bing:
+    { <<: *class, url: 'https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Bing.list' }
+  OneDrive:
+    {
+      <<: *class,
+      url: 'https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/OneDrive.list'
+    }
+  Microsoft:
+    {
+      <<: *class,
+      url: 'https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Microsoft.list'
+    }
+  Apple:
+    { <<: *class, url: 'https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Apple.list' }
+  Telegram:
+    {
+      <<: *class,
+      url: 'https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Telegram.list'
+    }
+  OpenAi:
+    {
+      <<: *class,
+      url: 'https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/OpenAi.list'
+    }
+  NetEaseMusic:
+    {
+      <<: *class,
+      url: 'https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/NetEaseMusic.list'
+    }
+  Steam:
+    {
+      <<: *class,
+      url: 'https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/Steam.list'
+    }
+  YouTube:
+    {
+      <<: *class,
+      url: 'https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/YouTube.list'
+    }
+  Netflix:
+    {
+      <<: *class,
+      url: 'https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/Netflix.list'
+    }
+  Bahamut:
+    {
+      <<: *class,
+      url: 'https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/Bahamut.list'
+    }
+  BilibiliHMT:
+    {
+      <<: *class,
+      url: 'https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/BilibiliHMT.list'
+    }
+  Bilibili:
+    {
+      <<: *class,
+      url: 'https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/Bilibili.list'
+    }
+  ChinaMedia:
+    {
+      <<: *class,
+      url: 'https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/ChinaMedia.list'
+    }
+  ProxyMedia:
+    {
+      <<: *class,
+      url: 'https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/ProxyMedia.list'
+    }
+  ProxyGFWlist:
+    {
+      <<: *class,
+      url: 'https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/ProxyGFWlist.list'
+    }
+  # ChinaDomain: { <<: *class, url: 'https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/ChinaDomain.list' }
+  ChinaCompanyIp:
+    {
+      <<: *class,
+      url: 'https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/ChinaCompanyIp.list'
+    }
+  Download:
+    {
+      <<: *class,
+      url: 'https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Download.list'
+    }
+  ChinaDomain:
+    {
+      <<: *domain,
+      url: 'https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/cn.mrs'
+    }
+  ChinaIp:
+    {
+      <<: *ip,
+      url: 'https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/cn.mrs'
+    }
+
+# ---------------------------------------------------
+# 4. 规则匹配逻辑 (顺序执行)
+# ---------------------------------------------------
+rules:
+  # --- 第一优先级：自定义规则 ---
+  - RULE-SET,MyDirect,DIRECT
+  - RULE-SET,MyCrypto,🚀 加密生态
+  - RULE-SET,MyProxy,🚀 节点选择
+
+  # --- 第二优先级：基础直连 ---
+  - RULE-SET,LocalAreaNetwork,DIRECT
+  - RULE-SET,UnBan,DIRECT
+  - RULE-SET,GoogleCN,DIRECT
+  - RULE-SET,SteamCN,DIRECT
+  - RULE-SET,Download,DIRECT
+
+  # ⚠️ 关键：B站大陆主站直连
+  - RULE-SET,Bilibili,DIRECT
+
+  # --- 第三优先级：广告与净化 ---
+  - RULE-SET,BanAD,🛑 广告拦截
+  - RULE-SET,BanProgramAD,🛑 广告拦截
+  - RULE-SET,AntiAD,🛑 广告拦截
+
+  # --- 第四优先级：微软/谷歌/苹果 ---
+  - RULE-SET,Bing,Ⓜ️ 微软服务
+  - RULE-SET,OneDrive,Ⓜ️ 微软服务
+  - RULE-SET,Microsoft,Ⓜ️ 微软服务
+  - RULE-SET,GoogleFCM,📢 谷歌FCM
+  - RULE-SET,Apple,🍎 苹果服务
+
+  # --- 第五优先级：特定应用分流 ---
+  - RULE-SET,Telegram,📲 电报消息
+  - RULE-SET,OpenAi,💬 OpenAi
+  - RULE-SET,NetEaseMusic,DIRECT
+  - RULE-SET,Steam,🎮 游戏平台
+
+  # --- 第六优先级：视频媒体 ---
+  - RULE-SET,YouTube,📹 油管视频
+  - RULE-SET,Netflix,🎥 奈飞视频
+  - RULE-SET,Bahamut,📺 港澳台解锁 # 巴哈姆特指向B站策略组(含港台节点)
+  - RULE-SET,BilibiliHMT,📺 港澳台解锁
+
+  # --- 第七优先级：通用媒体与兜底 ---
+  - RULE-SET,ChinaMedia,🌏 国内媒体
+  - RULE-SET,ProxyMedia,🌍 国外媒体
+
+  - RULE-SET,ProxyGFWlist,🚀 节点选择
+  - RULE-SET,ChinaDomain,DIRECT
+  - RULE-SET,ChinaCompanyIp,DIRECT
+  - RULE-SET,ChinaIp,DIRECT
+
+  - MATCH,🐟 漏网之鱼
