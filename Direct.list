@@ -6,9 +6,9 @@ DOMAIN-SUFFIX,time.windows.com
 DOMAIN-SUFFIX,lanzov.com
 DOMAIN-SUFFIX,hao123.com
 
-#windows电脑网络检测
-DOMAIN-SUFFIX,msftconnecttest.com
-DOMAIN-SUFFIX,msftncsi.com
+# windows电脑网络检测
+# DOMAIN-SUFFIX,msftconnecttest.com
+# DOMAIN-SUFFIX,msftncsi.com
 
 # giffgaff电话卡
 DOMAIN-SUFFIX,giffgaff.com
