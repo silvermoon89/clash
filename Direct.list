@@ -1,10 +1,49 @@
 # 直连补充列表(国内域名不解析时，防止走代理使用)
 
 # MyList
+
+# > Huobi
+DOMAIN-SUFFIX,hbabit.com
+DOMAIN-SUFFIX,hbfile.net
+DOMAIN-SUFFIX,huobi.com
+DOMAIN-SUFFIX,huobi.me
+DOMAIN-SUFFIX,huobi.pro
+DOMAIN-SUFFIX,huobi.sc
+DOMAIN-SUFFIX,huobiasia.vip
+DOMAIN-SUFFIX,huobigroup.com
+DOMAIN-SUFFIX,huobitoken.com
+DOMAIN-SUFFIX,heco-scan.com
+DOMAIN-SUFFIX,hecoview.com
+DOMAIN-SUFFIX,hbfile.net
+DOMAIN-SUFFIX,huobi.br.com
+DOMAIN-SUFFIX,bitderiv.com
+DOMAIN-SUFFIX,hecochain.com
+DOMAIN-SUFFIX,huobi.ws
+DOMAIN-SUFFIX,huobi.ug
+DOMAIN-SUFFIX,huobi.co.ma
+DOMAIN-SUFFIX,huobi.br.com
+PROCESS-NAME,Huobi.exe
+DOMAIN-KEYWORD,huobi
+
+# > OKX
+DOMAIN-SUFFIX,okex.com
+DOMAIN-SUFFIX,okex.org
+DOMAIN-SUFFIX,okx.com
+PROCESS-NAME,OKX.exe
+DOMAIN-KEYWORD,okx
+DOMAIN-KEYWORD,okex
+
+# > bitget
+DOMAIN-SUFFIX,bitget.com
+DOMAIN-SUFFIX,bitgetapp.com
+DOMAIN-SUFFIX,bitgetapps.com
+DOMAIN-SUFFIX,bitgetimg.com
+DOMAIN-SUFFIX,bitget.fit
+DOMAIN-KEYWORD,bitget
+
 # 域名后缀匹配
 DOMAIN-SUFFIX,time.windows.com
 DOMAIN-SUFFIX,lanzov.com
-DOMAIN-SUFFIX,hao123.com
 
 # windows电脑网络检测
 # DOMAIN-SUFFIX,msftconnecttest.com
@@ -251,23 +290,23 @@ DOMAIN-SUFFIX,jomodns.com
 DOMAIN-SUFFIX,yunjiasu-cdn.net
 
 # Bilibili
-DOMAIN-SUFFIX,acg.tv
-DOMAIN-SUFFIX,acgvideo.com
-DOMAIN-SUFFIX,b23.tv
-DOMAIN-SUFFIX,bigfun.cn
-DOMAIN-SUFFIX,bigfunapp.cn
-DOMAIN-SUFFIX,biliapi.com
-DOMAIN-SUFFIX,biliapi.net
-DOMAIN-SUFFIX,bilibili.com
-DOMAIN-SUFFIX,bilibili.co
-DOMAIN-SUFFIX,biliintl.co
-DOMAIN-SUFFIX,biligame.com
-DOMAIN-SUFFIX,biligame.net
-DOMAIN-SUFFIX,bilivideo.com
-DOMAIN-SUFFIX,bilivideo.cn
-DOMAIN-SUFFIX,hdslb.com
-DOMAIN-SUFFIX,im9.com
-DOMAIN-SUFFIX,smtcdns.net
+# DOMAIN-SUFFIX,acg.tv
+# DOMAIN-SUFFIX,acgvideo.com
+# DOMAIN-SUFFIX,b23.tv
+# DOMAIN-SUFFIX,bigfun.cn
+# DOMAIN-SUFFIX,bigfunapp.cn
+# DOMAIN-SUFFIX,biliapi.com
+# DOMAIN-SUFFIX,biliapi.net
+# DOMAIN-SUFFIX,bilibili.com
+# DOMAIN-SUFFIX,bilibili.co
+# DOMAIN-SUFFIX,biliintl.co
+# DOMAIN-SUFFIX,biligame.com
+# DOMAIN-SUFFIX,biligame.net
+# DOMAIN-SUFFIX,bilivideo.com
+# DOMAIN-SUFFIX,bilivideo.cn
+# DOMAIN-SUFFIX,hdslb.com
+# DOMAIN-SUFFIX,im9.com
+# DOMAIN-SUFFIX,smtcdns.net
 
 # ByteDance
 DOMAIN-SUFFIX,amemv.com
