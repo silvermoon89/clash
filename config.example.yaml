@@ -204,6 +204,17 @@ proxy-groups:
       - ♻️ 狮城自动
       - ♻️ 台湾自动
 
+  # 💎 Oracle
+  - name: 🚀 Oracle
+    type: select
+    proxies:
+      - DIRECT
+      - 🚀 节点选择
+      - ♻️ 美国自动
+      - ♻️ 日本自动
+      - ♻️ 狮城自动
+      - ♻️ 台湾自动
+
   # 🤖 OpenAI
   - name: 💬 OpenAi
     type: select
@@ -343,6 +354,11 @@ rule-providers:
     {
       <<: *class,
       url: 'https://raw.githubusercontent.com/silvermoon89/clash/refs/heads/main/Bybit.list'
+    }
+  Oracle:
+    {
+      <<: *class,
+      url: 'https://raw.githubusercontent.com/silvermoon89/clash/refs/heads/main/Oracle.list'
     }
   MyProxy:
     {
@@ -513,6 +529,7 @@ rules:
   # --- 第五优先级：特定应用分流 ---
   - RULE-SET,Binance,🚀 Binance
   - RULE-SET,Bybit,🚀 Bybit
+  - RULE-SET,Oracle,🚀 Oracle
   - RULE-SET,Telegram,📲 电报消息
   - RULE-SET,OpenAi,💬 OpenAi
   - RULE-SET,NetEaseMusic,DIRECT
