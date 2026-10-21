@@ -1,7 +1,7 @@
 # Clash/Mihomo routing template
 # Use this file as a remote routing source for 3x-ui subClashRules:
 #   Settings -> Subscription -> Clash / Mihomo -> Enable Routing
-#   subClashRules: https://your-domain.example/routing.yaml
+#   subClashRules: https://your-domain.example/routing/mihomo.yaml
 #
 # This file mirrors the routing rules in config.yaml.
 # Groups are adapted for 3x-ui dynamic proxies with include-all + filter.

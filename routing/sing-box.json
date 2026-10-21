@@ -1,0 +1,339 @@
+{
+  "outbounds": [
+    {
+      "type": "selector",
+      "tag": "PROXY",
+      "outbounds": [
+        "DIRECT"
+      ]
+    },
+    {
+      "type": "direct",
+      "tag": "DIRECT"
+    },
+    {
+      "type": "block",
+      "tag": "REJECT"
+    }
+  ],
+  "route": {
+    "rules": [
+      {
+        "rule_set": [
+          "my-direct"
+        ],
+        "outbound": "DIRECT"
+      },
+      {
+        "rule_set": [
+          "my-proxy"
+        ],
+        "outbound": "PROXY"
+      },
+      {
+        "rule_set": [
+          "local-area-network",
+          "unban",
+          "google-cn",
+          "steam-cn",
+          "download",
+          "bilibili"
+        ],
+        "outbound": "DIRECT"
+      },
+      {
+        "rule_set": [
+          "ban-ad",
+          "ban-program-ad",
+          "anti-ad"
+        ],
+        "outbound": "REJECT"
+      },
+      {
+        "rule_set": [
+          "bing",
+          "onedrive",
+          "microsoft"
+        ],
+        "outbound": "PROXY"
+      },
+      {
+        "rule_set": [
+          "google-fcm"
+        ],
+        "outbound": "PROXY"
+      },
+      {
+        "rule_set": [
+          "apple"
+        ],
+        "outbound": "PROXY"
+      },
+      {
+        "rule_set": [
+          "binance",
+          "bybit",
+          "oracle"
+        ],
+        "outbound": "PROXY"
+      },
+      {
+        "rule_set": [
+          "telegram"
+        ],
+        "outbound": "PROXY"
+      },
+      {
+        "rule_set": [
+          "openai"
+        ],
+        "outbound": "PROXY"
+      },
+      {
+        "rule_set": [
+          "netease-music"
+        ],
+        "outbound": "DIRECT"
+      },
+      {
+        "rule_set": [
+          "steam"
+        ],
+        "outbound": "PROXY"
+      },
+      {
+        "rule_set": [
+          "youtube",
+          "netflix",
+          "bahamut",
+          "bilibili-hmt",
+          "proxy-media"
+        ],
+        "outbound": "PROXY"
+      },
+      {
+        "rule_set": [
+          "china-media"
+        ],
+        "outbound": "DIRECT"
+      },
+      {
+        "rule_set": [
+          "proxy-gfwlist"
+        ],
+        "outbound": "PROXY"
+      },
+      {
+        "rule_set": [
+          "china-domain",
+          "china-company-ip",
+          "china-ip"
+        ],
+        "outbound": "DIRECT"
+      },
+      {
+        "outbound": "PROXY"
+      }
+    ],
+    "rule_set": [
+      {
+        "type": "remote",
+        "tag": "my-direct",
+        "format": "binary",
+        "url": "https://your-domain.example/rules/my-direct.srs"
+      },
+      {
+        "type": "remote",
+        "tag": "my-proxy",
+        "format": "binary",
+        "url": "https://your-domain.example/rules/my-proxy.srs"
+      },
+      {
+        "type": "remote",
+        "tag": "local-area-network",
+        "format": "binary",
+        "url": "https://your-domain.example/rules/local-area-network.srs"
+      },
+      {
+        "type": "remote",
+        "tag": "unban",
+        "format": "binary",
+        "url": "https://your-domain.example/rules/unban.srs"
+      },
+      {
+        "type": "remote",
+        "tag": "google-cn",
+        "format": "binary",
+        "url": "https://your-domain.example/rules/google-cn.srs"
+      },
+      {
+        "type": "remote",
+        "tag": "steam-cn",
+        "format": "binary",
+        "url": "https://your-domain.example/rules/steam-cn.srs"
+      },
+      {
+        "type": "remote",
+        "tag": "download",
+        "format": "binary",
+        "url": "https://your-domain.example/rules/download.srs"
+      },
+      {
+        "type": "remote",
+        "tag": "bilibili",
+        "format": "binary",
+        "url": "https://your-domain.example/rules/bilibili.srs"
+      },
+      {
+        "type": "remote",
+        "tag": "ban-ad",
+        "format": "binary",
+        "url": "https://your-domain.example/rules/ban-ad.srs"
+      },
+      {
+        "type": "remote",
+        "tag": "ban-program-ad",
+        "format": "binary",
+        "url": "https://your-domain.example/rules/ban-program-ad.srs"
+      },
+      {
+        "type": "remote",
+        "tag": "anti-ad",
+        "format": "binary",
+        "url": "https://your-domain.example/rules/anti-ad.srs"
+      },
+      {
+        "type": "remote",
+        "tag": "bing",
+        "format": "binary",
+        "url": "https://your-domain.example/rules/bing.srs"
+      },
+      {
+        "type": "remote",
+        "tag": "onedrive",
+        "format": "binary",
+        "url": "https://your-domain.example/rules/onedrive.srs"
+      },
+      {
+        "type": "remote",
+        "tag": "microsoft",
+        "format": "binary",
+        "url": "https://your-domain.example/rules/microsoft.srs"
+      },
+      {
+        "type": "remote",
+        "tag": "google-fcm",
+        "format": "binary",
+        "url": "https://your-domain.example/rules/google-fcm.srs"
+      },
+      {
+        "type": "remote",
+        "tag": "apple",
+        "format": "binary",
+        "url": "https://your-domain.example/rules/apple.srs"
+      },
+      {
+        "type": "remote",
+        "tag": "binance",
+        "format": "binary",
+        "url": "https://your-domain.example/rules/binance.srs"
+      },
+      {
+        "type": "remote",
+        "tag": "bybit",
+        "format": "binary",
+        "url": "https://your-domain.example/rules/bybit.srs"
+      },
+      {
+        "type": "remote",
+        "tag": "oracle",
+        "format": "binary",
+        "url": "https://your-domain.example/rules/oracle.srs"
+      },
+      {
+        "type": "remote",
+        "tag": "telegram",
+        "format": "binary",
+        "url": "https://your-domain.example/rules/telegram.srs"
+      },
+      {
+        "type": "remote",
+        "tag": "openai",
+        "format": "binary",
+        "url": "https://your-domain.example/rules/openai.srs"
+      },
+      {
+        "type": "remote",
+        "tag": "netease-music",
+        "format": "binary",
+        "url": "https://your-domain.example/rules/netease-music.srs"
+      },
+      {
+        "type": "remote",
+        "tag": "steam",
+        "format": "binary",
+        "url": "https://your-domain.example/rules/steam.srs"
+      },
+      {
+        "type": "remote",
+        "tag": "youtube",
+        "format": "binary",
+        "url": "https://your-domain.example/rules/youtube.srs"
+      },
+      {
+        "type": "remote",
+        "tag": "netflix",
+        "format": "binary",
+        "url": "https://your-domain.example/rules/netflix.srs"
+      },
+      {
+        "type": "remote",
+        "tag": "bahamut",
+        "format": "binary",
+        "url": "https://your-domain.example/rules/bahamut.srs"
+      },
+      {
+        "type": "remote",
+        "tag": "bilibili-hmt",
+        "format": "binary",
+        "url": "https://your-domain.example/rules/bilibili-hmt.srs"
+      },
+      {
+        "type": "remote",
+        "tag": "china-media",
+        "format": "binary",
+        "url": "https://your-domain.example/rules/china-media.srs"
+      },
+      {
+        "type": "remote",
+        "tag": "proxy-media",
+        "format": "binary",
+        "url": "https://your-domain.example/rules/proxy-media.srs"
+      },
+      {
+        "type": "remote",
+        "tag": "proxy-gfwlist",
+        "format": "binary",
+        "url": "https://your-domain.example/rules/proxy-gfwlist.srs"
+      },
+      {
+        "type": "remote",
+        "tag": "china-domain",
+        "format": "binary",
+        "url": "https://your-domain.example/rules/china-domain.srs"
+      },
+      {
+        "type": "remote",
+        "tag": "china-company-ip",
+        "format": "binary",
+        "url": "https://your-domain.example/rules/china-company-ip.srs"
+      },
+      {
+        "type": "remote",
+        "tag": "china-ip",
+        "format": "binary",
+        "url": "https://your-domain.example/rules/china-ip.srs"
+      }
+    ]
+  }
+}
