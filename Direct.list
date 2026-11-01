@@ -8,6 +8,57 @@ DOMAIN-SUFFIX,163music.linyu.qzz.io
 # L站4K影视
 DOMAIN-SUFFIX,pool.983698.xyz
 
+# 采集站 API
+DOMAIN-SUFFIX,lziapi.com,DIRECT
+DOMAIN-SUFFIX,dyttzyapi.com,DIRECT
+DOMAIN-SUFFIX,xgzyapi.com,DIRECT
+DOMAIN-SUFFIX,huyaapi.com,DIRECT
+DOMAIN-SUFFIX,xinlangapi.com,DIRECT
+DOMAIN-SUFFIX,maotaizy.cc,DIRECT
+DOMAIN-SUFFIX,rycjapi.com,DIRECT
+DOMAIN-SUFFIX,guangsuapi.com,DIRECT
+DOMAIN-SUFFIX,subocj.com,DIRECT
+DOMAIN-SUFFIX,hhzyapi.com,DIRECT
+DOMAIN-SUFFIX,maoyanapi.top,DIRECT
+DOMAIN-SUFFIX,ukuapi88.com,DIRECT
+DOMAIN-SUFFIX,ukuapi.com,DIRECT
+DOMAIN-SUFFIX,mdzyapi.com,DIRECT
+DOMAIN-SUFFIX,hongniuzy2.com,DIRECT
+DOMAIN-SUFFIX,zuidapi.com,DIRECT
+DOMAIN-SUFFIX,jyzyapi.com,DIRECT
+DOMAIN-SUFFIX,jinyingzy.com,DIRECT
+DOMAIN-SUFFIX,apibdzy.com,DIRECT
+DOMAIN-SUFFIX,360zyzz.com,DIRECT
+DOMAIN-SUFFIX,jszyapi.com,DIRECT
+DOMAIN-SUFFIX,ffzyapi.com,DIRECT
+DOMAIN-SUFFIX,bfzyapi.com,DIRECT
+DOMAIN-SUFFIX,360zy.com,DIRECT
+DOMAIN-SUFFIX,niuniuzy.me,DIRECT
+DOMAIN-SUFFIX,yayazy.net,DIRECT
+DOMAIN-SUFFIX,suoniapi.com,DIRECT
+DOMAIN-SUFFIX,sdzyapi.com,DIRECT
+DOMAIN-SUFFIX,apiyhzy.com,DIRECT
+DOMAIN-SUFFIX,wujinapi.com,DIRECT
+DOMAIN-SUFFIX,wujinapi.me,DIRECT
+DOMAIN-SUFFIX,wujinapi.net,DIRECT
+DOMAIN-SUFFIX,subocaiji.com,DIRECT
+DOMAIN-SUFFIX,1080zyku.com,DIRECT
+DOMAIN-SUFFIX,xhscdn.com,DIRECT      # 小红书视频源
+DOMAIN-SUFFIX,kwimgs.com,DIRECT      # 快手短视频源
+DOMAIN-SUFFIX,ykimg.com,DIRECT       # 优酷图片/视频
+
+# 播放 CDN（动态子域用 KEYWORD）
+DOMAIN-KEYWORD,cdnlz,DIRECT          # 量子 v.cdnlz*.com
+DOMAIN-KEYWORD,lzcdn,DIRECT          # 量子 v.lzcdn*.com
+DOMAIN-KEYWORD,lzv,DIRECT          # 量子 v.lzv*.com
+DOMAIN-SUFFIX,hzhcbkj.cn,DIRECT      # 量子备用 m3u8 源
+DOMAIN-KEYWORD,xluuss,DIRECT         # 新浪 play.xluuss.com
+DOMAIN-KEYWORD,ddbbffcdn,DIRECT      # 暴风 c1.ddbbffcdn.com
+DOMAIN-KEYWORD,fengbao,DIRECT        # 暴风 fengbao*.com
+DOMAIN-KEYWORD,xgplay,DIRECT         # 西瓜 svip.xgplay*.com
+DOMAIN-KEYWORD,dytt-cinema,DIRECT    # 电影天堂
+DOMAIN-KEYWORD,dytt-tvs,DIRECT       # 电影天堂
+
 # > Huobi
 DOMAIN-SUFFIX,hbabit.com
 DOMAIN-SUFFIX,hbfile.net
